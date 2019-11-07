@@ -2,20 +2,20 @@
 import java.lang.*;
 import java.io.*;
 
-public class Main
+public class R08_VNA02_J
 {
     public static void main(String[] args) {
     }
 }
 
 final class Flag {
-  private volatile boolean flag = true;
+  private boolean flag = true;
 
-  public void toggle() {  // Unsafe
+  public synchronized void toggle() {  // Unsafe
     flag ^= true;
   }
 
-  public boolean getFlag() { // Safe
+  public synchronized boolean getFlag() { // Safe
     return flag;
   }
-} 
+}

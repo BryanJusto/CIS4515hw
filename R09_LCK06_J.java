@@ -1,21 +1,21 @@
 import java.lang.*;
 import java.io.*;
 
-public final class Main implements Runnable {
-  private static volatile int counter;
+public final class R09_LCK06_J implements Runnable {
+  private static int counter;
   // ...
-  private final Object lock = new Object();
- 
-  @Override public void run() {
+  private static final Object lock = new Object();
+
+  public void run() {
     synchronized (lock) {
       counter++;
       // ...
     }
   }
- 
+
   public static void main(String[] args) {
     for (int i = 0; i < 2; i++) {
-    new Thread(new Main()).start();
+    new Thread(new R09_LCK06_J()).start();
     }
   }
 }
