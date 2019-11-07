@@ -1,12 +1,21 @@
 //VNA02-J
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+    public static void main(String[] args) {
+    }
+}
+
 final class Flag {
-  private boolean flag = true;
- 
-  public synchronized void toggle() {
-    flag ^= true; // Same as flag = !flag;
+  private volatile boolean flag = true;
+
+  public void toggle() {  // Unsafe
+    flag ^= true;
   }
- 
-  public synchronized boolean getFlag() {
+
+  public boolean getFlag() { // Safe
     return flag;
   }
-}
+} 
